@@ -20,7 +20,14 @@ namespace TestImplementation.SetCookie.Controllers
             if (ModelState.IsValid)
             {
                 System.Web.Security.FormsAuthentication.SetAuthCookie(model.UserName, true);
-                return Redirect(model.ReturnUrl);
+                if (!string.IsNullOrEmpty(model.ReturnUrl))
+                {
+                    return Redirect(model.ReturnUrl);
+                }
+                else
+                {
+                    return Redirect("/");
+                }
             }
             return View(model);
         }

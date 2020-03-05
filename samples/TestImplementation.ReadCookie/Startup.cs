@@ -30,7 +30,7 @@ namespace TestImplementation.ReadCookie
                 EncryptionMethod = section.GetValue<EncryptionMethod>("EncryptionMethod"),
                 ValidationMethod = section.GetValue<ValidationMethod>("ValidationMethod"),
             };
-
+            services.AddMvc(option => option.EnableEndpointRouting = false);
             services
                 .AddAuthentication(options =>
                 {
